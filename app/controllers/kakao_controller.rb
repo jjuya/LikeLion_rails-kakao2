@@ -25,12 +25,26 @@ class KakaoController < ApplicationController
     
     if user_msg == btn[0]
       parser = Parser::Movie.new
-      result = parser.rank_movie.to_s
+      movies = parser.rank_movie
+      
+      result = "네이버 영화 순위 \n"
+      
+      movies.each do |m|
+        result += "\n" + m
+      end
+      
       msg = @@message.getMessage(result)
     elsif user_msg == btn[1]
       parser = Parser::Movie.new
       movies = parser.rank_ticketing
-      msg = @@message.getMessage(movies.to_s)
+      
+      result = "네이버 영화 예매 순위 \n"
+      
+      movies.each do |m|
+        result += "\n" + m
+      end
+      
+      msg = @@message.getMessage(result)
     elsif user_msg == btn[2]
       msg = @@message.getMessage(sleeping.sample.to_s)
     end

@@ -38,7 +38,7 @@ module Parser
             	cssTitle = "#old_content > table > tbody > tr:nth-child(" + i.to_s + ") > td.title > div > a"
             	cssTicket = "#old_content > table > tbody > tr:nth-child(" + i.to_s + ") > td.reserve_per.ar"
             	movie = (i - 1).to_s + "위 " + doc.css(cssTitle).text
-                ticket = doc.css(cssTicket).text
+                ticket = "<" + doc.css(cssTicket).text + ">"
             	movies << movie + ticket
             end
             
